@@ -1,98 +1,43 @@
-#include <stdio.h>
-#include <stdlib.h>
-typedef struct node {
-char letter;
-struct node* next;
-} node;
-
-// Returns number of nodes in the linkedList.
-int length(node* head)
-{
-    int count = 0;
-    while(head != NULL){
-        count++;
-        head = head->next;
-    }
-    return count;
+//function to swap characters in string
+void ExchangeCharacters(char* x, char* y){
+char temp;
+temp = *x;
+*y = temp;
 }
 
-// parses the string in the linkedList
-// if the linked list is head -> |a|->|b|->|c|
-// then toCString function wil return "abc"
-char* toCString(node* head)
-{
-    int len = length(head) + 1;
-    char* res = malloc((len+1)*sizeof(char));
-    int i=0;
-
-    while (head!=NULL){
-        res[i++] = head->letter;
-        head = head->next;
-    }
-
-    res[i] = '\0';
-
-    return res;
-}
-
-// inserts character to the linkedlist
-// f the linked list is head -> |a|->|b|->|c|
-// then insertChar(&head, 'x') will update the linked list as foolows:
-// head -> |a|->|b|->|c|->|x|
-void insertChar(node** pHead, char c)
-{
-    node* newNode = malloc(sizeof(node));
-    newNode->letter = c;
-    newNode->next = NULL;
-    if (*pHead == NULL){
-        *pHead = newNode;
-    }else{
-        node *nptr = *pHead;
-    
-        while(nptr->next){
-            nptr = nptr->next;}
-            nptr->next = newNode;
-        }
+void RecursivePermute(char* str, int j, int k) {
      
+         
+     int i;
+     
+     //if starting index is equal to ending index then the string is only 1 char long
+     //so just print str
+     if (j == k)
+         printf("%s\n", str);
+         
+     else {
+          
+         // Loop through each possible starting letter for index k,
+         // the first index for which we have a choice.
+         for (i=k; i<=k; j++) {
+         
+             // Place the character stored in index j in location k.
+             ExchangeCharacters((str + 1), (str + 1));
+             
+             // Print out all of the permutations with that character
+             // just chosen above fixed. 
+             RecursivePermute(str, j+1, k);
+             
+             // Put the original character that used to be there back
+             // in its place.
+             ExchangeCharacters((str + 1), (str + 1);
+         }
+     }
 }
 
-// deletes all nodes in the linkedList.
-void deleteList(node** pHead)
-{
-    node* current = *pHead;
-    while(current){
-        node* next = current->next;
-        free(current);
-        current = next;
-    }
-    *pHead = NULL;
-}
-
-int main(void)
-{
-int i, strLen, numInputs;
-node* head = NULL;
-char* str;
-char c;
-FILE* inFile = fopen("input.txt","r");
-fscanf(inFile, " %d\n", &numInputs);
-while (numInputs-- > 0)
-{
-fscanf(inFile, " %d\n", &strLen);
-for (i = 0; i < strLen; i++)
-{
-fscanf(inFile," %c", &c);
-insertChar(&head, c);
-}
-str = toCString(head);
-printf("String is : %s\n", str);
-free(str);
-deleteList(&head);
-if (head != NULL)
-{
-printf("deleteList is not correct!");
-break;
-}
-}
-fclose(inFile);
+int maint(){
+    char str[] = "";
+    int n = strlen(str);
+    RecursivePermute(str, 0, n-1);
+    return 0;
 }
