@@ -1,2 +1,0 @@
-# lab5
-This repo contains my lab 4 assignment that was converted to my lab 5 assignment, as well as the input txt file. I built my repo by clicking new repository on github. I also downloaded git to my mac, cloned my repo to my computer. This allowed me to be able to change my repo right on my desktop. Next I committed my updates and then pushed them onto github by using my user name and token that I generated.
